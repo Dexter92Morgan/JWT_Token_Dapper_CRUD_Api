@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  dapper_crud_api:
+    image: ${DOCKER_REGISTRY-}dappercrudapi
+    build:
+      context: .
+      dockerfile: Dapper_CRUD_Api/Dockerfile

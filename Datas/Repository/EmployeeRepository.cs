@@ -1,14 +1,12 @@
 ﻿using Dapper;
 using Npgsql;
-using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Text;
 
 namespace Datas.Repository
 {
-   public class EmployeeRepository
+    public class EmployeeRepository
     {
         private string conStr;
 
@@ -16,7 +14,7 @@ namespace Datas.Repository
         {
             //for Docker
             //conStr = @"Host=host.docker.internal;Port=5432;User ID=postgres; Password=Sa123;Database=postgres;Pooling=true;";
-            
+
             //for Local
             conStr = @"Host=localhost;Port=5432;User ID=postgres; Password=Sa123;Database=postgres;Pooling=true;";
 
@@ -58,13 +56,13 @@ namespace Datas.Repository
         }
 
         //GET BY ID
-        public Employee  GetById(int id)
+        public Employee GetById(int id)
         {
             using (IDbConnection dbConnection = Connection)
             {
                 string sql = @"SELECT * FROM employeedapper WHERE EmpId=@EmpId ";
                 dbConnection.Open();
-                return dbConnection.Query<Employee>(sql, new {EmpId = id}).FirstOrDefault();
+                return dbConnection.Query<Employee>(sql, new { EmpId = id }).FirstOrDefault();
             }
         }
 
@@ -76,7 +74,7 @@ namespace Datas.Repository
             {
                 string sql = @"UPDATE employeedapper SET EmpName=@EmpName,Designation=@Designation,Department=@Department WHERE EmpId=@EmpId ";
                 dbConnection.Open();
-                dbConnection.Query(sql,employee);
+                dbConnection.Query(sql, employee);
             }
 
         }

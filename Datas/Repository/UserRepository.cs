@@ -1,12 +1,9 @@
 ﻿using Dapper;
 using Datas.Models;
 using Npgsql;
-using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Datas.Repository
 {
@@ -75,7 +72,7 @@ namespace Datas.Repository
             {
                 string sql = @"SELECT * FROM userinfo WHERE username=@username and password=@password ";
                 dbConnection.Open();
-                return  dbConnection.Query<UserInfo>(sql, new { UserName = username, Password = password }).FirstOrDefault();
+                return dbConnection.Query<UserInfo>(sql, new { UserName = username, Password = password }).FirstOrDefault();
             }
         }
 

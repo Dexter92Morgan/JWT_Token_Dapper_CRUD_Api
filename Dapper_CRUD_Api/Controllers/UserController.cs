@@ -1,9 +1,7 @@
-﻿using Datas.Repository;
-using Datas;
-using Microsoft.AspNetCore.Http;
+﻿using Datas.Models;
+using Datas.Repository;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
-using Datas.Models;
 
 namespace Dapper_CRUD_Api.Controllers
 {

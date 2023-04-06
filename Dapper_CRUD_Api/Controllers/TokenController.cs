@@ -1,16 +1,12 @@
 ﻿using Datas.Models;
 using Datas.Repository;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
-using Microsoft.IdentityModel.JsonWebTokens;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using System.Threading.Tasks;
-using static Dapper.SqlMapper;
 
 namespace Dapper_CRUD_Api.Controllers
 {
@@ -19,7 +15,6 @@ namespace Dapper_CRUD_Api.Controllers
     public class TokenController : ControllerBase
     {
         public IConfiguration _configuration;
-        private string conStr;
         private readonly UserRepository _userRepository;
         public TokenController(IConfiguration config, UserRepository userRepository)
         {
@@ -28,7 +23,7 @@ namespace Dapper_CRUD_Api.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody] UserInfo _userData)
+        public IActionResult GenerateToken([FromBody] UserInfo _userData)
         {
 
             TokenResponse tokenResponse = new TokenResponse();
